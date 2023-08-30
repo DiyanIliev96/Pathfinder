@@ -11,4 +11,6 @@ import java.util.List;
 public interface RouteRepository  extends JpaRepository<Route,Long> {
     @Query("select r from Route r order by size(r.comments) desc")
     List<Route> getMostCommented();
+
+    Route findFirstByOrderByCommentsDesc();
 }

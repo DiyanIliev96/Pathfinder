@@ -15,6 +15,6 @@ public class RouteService {
 
 
     public Route mostCommented() {
-        return routeRepository.getMostCommented().get(0);
+        return routeRepository.findFirstByOrderByCommentsDesc();
     }
 }

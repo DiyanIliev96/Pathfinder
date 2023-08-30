@@ -29,7 +29,7 @@ public class Route extends BaseEntity {
     private User author;
     @ManyToMany
     private Set<Category> categories;
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route",fetch = FetchType.EAGER)
     private Set<Comment> comments;
     @OneToMany(mappedBy = "route",fetch = FetchType.EAGER)
     private Set<Picture> pictures;
