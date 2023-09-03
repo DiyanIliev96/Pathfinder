@@ -2,7 +2,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <th:block th:insert="/fragments/head"></th:block>
+    <th:block th:insert="~{fragments/head}"></th:block>
 </head>
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
@@ -29,11 +29,14 @@
                                aria-describedby="usernameHelpInline">
                         <small id="usernameError"
                                class="invalid-feedback text-dark form-text bg-danger rounded">
-                            Username length must be more than 5 characters.
+                            <span th:each="err : ${#fields.errors('username')}"
+                            th:text="${err}">
+                                <span>&nbsp;</span>
+                            </span>
                         </small>
 
-                        <small id="usernameUniqueError"
-                               class="invalid-feedback bg-danger rounded">Username is already occupied</small>
+<!--                        <small id="usernameUniqueError"-->
+<!--                               class="invalid-feedback bg-danger rounded">Username is already occupied</small>-->
 
                     </div>
                 </div>
