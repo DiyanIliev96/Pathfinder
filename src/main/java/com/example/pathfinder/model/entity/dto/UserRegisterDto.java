@@ -1,5 +1,6 @@
 package com.example.pathfinder.model.entity.dto;
 
+import com.example.pathfinder.model.entity.validation.UniqueEmail;
 import com.example.pathfinder.model.entity.validation.UniqueUsername;
 import jakarta.validation.constraints.*;
 
@@ -15,6 +16,7 @@ public class UserRegisterDto {
     private String fullName;
     @NotEmpty
     @Email
+    @UniqueEmail
     private String email;
     @NotEmpty
     @Positive
