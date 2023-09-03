@@ -123,14 +123,17 @@
                     <div class="col-auto">
                         <input name="confirmPassword"
                                th:field="*{confirmPassword}"
+                               th:errorclass="is-invalid"
                                 required minlength="5" maxlength="20"
                                type="password"
                                id="inputConfirmPassword"
                                class="form-control"
                                aria-describedby="confirmPasswordHelpInline">
                         <small id="confirmPasswordError"
-                               class="invalid-feedback  form-text bg-danger rounded">
-                            Password length must be between 5 and 20 characters and passwords should match.
+                               class="invalid-feedback text-dark form-text bg-danger rounded">
+                            <span th:each="err : ${#object.#fields.errors()}">
+                                <span th:text="${err}"></span>
+                            </span>
                         </small>
                     </div>
                 </div>
