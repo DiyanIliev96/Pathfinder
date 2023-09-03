@@ -1,9 +1,10 @@
 package com.example.pathfinder.model.entity.dto;
 
+import com.example.pathfinder.model.entity.validation.FieldMatch;
 import com.example.pathfinder.model.entity.validation.UniqueEmail;
 import com.example.pathfinder.model.entity.validation.UniqueUsername;
 import jakarta.validation.constraints.*;
-
+@FieldMatch(first = "password",second = "confirmPassword",message = "Passwords should match.")
 public class UserRegisterDto {
 
     @NotEmpty(message = "Username must not be empty.")
