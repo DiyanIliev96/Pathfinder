@@ -35,6 +35,7 @@ public class RegisterController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userRegisterModel",userRegisterDto);
             redirectAttributes.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "userRegisterModel", bindingResult);
+            return "redirect:/register";
         }
 
         userService.doRegister(userRegisterDto);
