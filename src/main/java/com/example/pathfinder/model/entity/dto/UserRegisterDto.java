@@ -1,11 +1,13 @@
 package com.example.pathfinder.model.entity.dto;
 
+import com.example.pathfinder.model.entity.validation.UniqueUsername;
 import jakarta.validation.constraints.*;
 
 public class UserRegisterDto {
 
-    @NotEmpty
-    @Size(min = 5,max = 20)
+    @NotEmpty(message = "Username must not be empty.")
+    @Size(min = 5,max = 20,message = "Username must be between 5 and 20 characters.")
+    @UniqueUsername
     private String username;
 
     @NotEmpty
