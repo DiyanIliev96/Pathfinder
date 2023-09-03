@@ -21,17 +21,11 @@ public class UserService {
 
     public void doRegister(UserRegisterDto userRegisterDto) {
         User user = new User();
-        boolean isUserExist = isUserExist(userRegisterDto);
-        if (!isUserExist) {
             user.setUsername(userRegisterDto.getUsername())
                     .setFullName(userRegisterDto.getFullName())
                     .setPassword(passwordEncoder.encode(userRegisterDto.getPassword()))
                     .setEmail(user.getEmail());
             userRepository.save(user);
-        }
     }
 
-    public boolean isUserExist(UserRegisterDto userRegisterDto) {
-        return userRepository.existsByUsername(userRegisterDto.getUsername());
-    }
 }
