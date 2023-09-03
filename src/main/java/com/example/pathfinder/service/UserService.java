@@ -24,7 +24,8 @@ public class UserService {
             user.setUsername(userRegisterDto.getUsername())
                     .setFullName(userRegisterDto.getFullName())
                     .setPassword(passwordEncoder.encode(userRegisterDto.getPassword()))
-                    .setEmail(user.getEmail());
+                    .setEmail(userRegisterDto.getEmail())
+                    .setAge(Integer.parseInt(userRegisterDto.getAge()));
             userRepository.save(user);
     }
 
