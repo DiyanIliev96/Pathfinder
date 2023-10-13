@@ -8,9 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequestMapping("/user")
 public class RegisterController {
 
     private final UserService userService;
@@ -35,11 +37,11 @@ public class RegisterController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userRegisterModel",userRegisterDto);
             redirectAttributes.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "userRegisterModel", bindingResult);
-            return "redirect:/register";
+            return "redirect:/user/register";
         }
 
         userService.doRegister(userRegisterDto);
         System.out.println(userRegisterDto);
-        return "redirect:/register";
+        return "redirect:/";
     }
 }

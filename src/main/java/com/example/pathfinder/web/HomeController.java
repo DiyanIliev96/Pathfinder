@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -23,11 +24,7 @@ public class HomeController {
         return "index";
     }
 
-//    @GetMapping("/register")
-//    public String register() {
 //
-//        return "register";
-//    }
 
     @GetMapping("/route-details")
     public String learnMore(Model model) {
@@ -36,7 +33,6 @@ public class HomeController {
 
         return "route-details";
     }
-
     @GetMapping("/about")
     public String about() {
         return "about";
