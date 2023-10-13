@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -13,26 +14,34 @@
         <li>
             <a href="/">Home</a>
         </li>
-        <li>
-            <a th:href="@{/user/login}">Login</a>
-        </li>
-        <li>
-            <a th:href="@{/user/register}">Register</a>
-        </li>
+        <th:block sec:authorize="!isAuthenticated()">
+
+            <li>
+                <a th:href="@{/user/login}">Login</a>
+            </li>
+            <li>
+                <a th:href="@{/user/register}">Register</a>
+            </li>
+        </th:block>
+
+
+        <th:block sec:authorize="isAuthenticated()">
+            <li>
+                <a href="/add/route">Add new route</a>
+            </li>
+            <li>
+                <a href="/profile">Profile</a>
+            </li>
+            <li sec:authorize="hasRole('ADMIN')">
+                <a href="/admin">Admin</a>
+            </li>
+            <li>
+                <a th:href="@{/user/logout}">Logout</a>
+            </li>
+        </th:block>
+
         <li>
             <a href="/about">About</a>
-        </li>
-        <li>
-            <a href="/add/route">Add new route</a>
-        </li>
-        <li>
-            <a href="/profile">Profile</a>
-        </li>
-        <li>
-            <a href="/admin">Admin</a>
-        </li>
-        <li>
-            <a th:href="@{/user/logout}">Logout</a>
         </li>
     </ul>
 </nav>

@@ -25,7 +25,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests((auth) -> auth
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                 .permitAll()
-                .requestMatchers("/")
+                .requestMatchers("/","/about")
                 .permitAll()
                 .requestMatchers("/user/register","/user/login").anonymous()
                 .anyRequest().authenticated());
